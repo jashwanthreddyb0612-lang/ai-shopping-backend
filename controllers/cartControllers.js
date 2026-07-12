@@ -6,13 +6,14 @@ const AddToCart=async(req,res)=>{
 		console.log(cart);
 		const cartID=cart.id;
 		console.log(cartID);
-		const{productID}=req.params.productID;
+		const productID=req.params.productID;
+		console.log(productID);
 		const{quantity}=req.body;
 
 	const cart_items=await addtocart({productID,quantity,cartID});
 	res.status(200).json(cart_items);
 }catch(error){
-	res.status(401).json(error.message);
+	res.status(500).json(error.message);
 }
 };
 const viewCartItems=async(req,res)=>{
