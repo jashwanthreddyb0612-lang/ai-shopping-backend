@@ -34,7 +34,7 @@ app.use("/addresses",addressRoutes);
 app.use("/dashboards",dashboardRoutes);
 app.use("/recomendations",recomendationRoutes);
 
-const PORT=process.env.DB_PORT||5000;
+const PORT=process.env.PORT||5000;
 app.listen(PORT,()=>{
 	console.log(`server running on port ${PORT}`);
 });
