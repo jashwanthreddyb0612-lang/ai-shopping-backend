@@ -32,8 +32,9 @@ app.use("/wishlist",wishlistRoutes);
 app.use("/payments",paymentRoutes);
 app.use("/addresses",addressRoutes);
 app.use("/dashboards",dashboardRoutes);
-app.use("/recomendations",recomendationRoutes)
+app.use("/recomendations",recomendationRoutes);
 
-app.listen(5000,()=>{
-	console.log("server running on port 5000");
+const PORT=process.env.DB_PORT||5000;
+app.listen(PORT,()=>{
+	console.log(`server running on port ${PORT}`);
 });
