@@ -1,0 +1,11 @@
+const express=require("express");
+const router=express.Router();
+const {addCategory,getAllCategories,getCategoryById,updateCategory,removeCategory}=require("../controllers/categoryControllers");
+const middleware=require("../middleware/authMiddleware");
+const {adminMiddleware}=require("../middleware/adminMiddleware");
+router.post("/category",middleware,adminMiddleware,addCategory);
+router.get("/allcategories",middleware,getAllCategories);
+router.get("/category/:id",middleware,getCategoryById);
+router.put("/category/:id",middleware,adminMiddleware,updateCategory);
+router.delete("/category/:id",middleware,adminMiddleware,removeCategory);
+module.exports=router;
