@@ -2,7 +2,7 @@ const express=require("express");
 const router=express.Router();
 const {AddToCart,viewCartItems,removeFromCart,increaseQuantity,decreaseQuantity}=require("../controllers/cartControllers");
 const middleware=require("../middleware/authMiddleware");
-router.post("/addtocart",middleware,AddToCart);
+router.post("/addtocart/:productID",middleware,AddToCart);
 router.get("/viewcart",middleware,viewCartItems);
 router.delete("/removeitem/:id",middleware,removeFromCart);
 router.put("/increasequantity/:id",middleware,increaseQuantity);
