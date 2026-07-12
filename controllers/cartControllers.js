@@ -6,7 +6,8 @@ const AddToCart=async(req,res)=>{
 		console.log(cart);
 		const cartID=cart.id;
 		console.log(cartID);
-		const{productID,quantity}=req.body;
+		const{productID}=req.params.productID;
+		const{quantity}=req.body;
 
 	const cart_items=await addtocart({productID,quantity,cartID});
 	res.status(200).json(cart_items);
