@@ -1,10 +1,12 @@
 const {getallproducts,getproducts,getproductsbyid,addproduct,updateproduct,removeproduct,productwithcategory,searchproducts,getrelatedproducts,savetorecentlyviewed,recentlyviewedproducts,savesearch,searchhistory,deletehistory}=require("../models/productModel");
+const {successResponse,errorResponse}=require("../utils/response");
+const errorMiddleware=require("../middleware/errorMiddleware");
 const getAllProducts=async(req,res)=>{
 	try{
 		const products=await getallproducts();
-		res.json(products);
+			successResponse(res,"Products fetched successfully",products);
 	}catch(error){
-		res.json(error.message);
+	next(error);
 	}
 };
 

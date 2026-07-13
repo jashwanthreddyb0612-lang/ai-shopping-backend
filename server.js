@@ -17,6 +17,7 @@ const paymentRoutes=require("./routes/paymentRoutes");
 const addressRoutes=require("./routes/addressRoutes");
 const dashboardRoutes=require("./routes/dashboardRoutes");
 const recomendationRoutes=require("./routes/recomendationRoutes");
+const errorHandler=require("./middleware/errorMiddleware");
 
 app.get("/",(req,res)=>{
 	res.send("server running");
@@ -33,6 +34,7 @@ app.use("/payments",paymentRoutes);
 app.use("/addresses",addressRoutes);
 app.use("/dashboards",dashboardRoutes);
 app.use("/recomendations",recomendationRoutes);
+app.use(errorHandler);
 
 const PORT=process.env.PORT||5000;
 app.listen(PORT,()=>{
