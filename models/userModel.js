@@ -34,6 +34,12 @@ const unblockuser=async({id})=>{
 		);
 	return result.rows[0];
    };
+const removeuser=async(userID)=>{
+	const result=await pool.query(
+    "DELETE FROM users WHERE user_id=$1",[userID]
+		);
+	return result.rows[0];
+}
 
 
-module.exports={registeruser,loginuser,getusers,blockuser,unblockuser};
+module.exports={registeruser,loginuser,getusers,blockuser,unblockuser,removeuser};

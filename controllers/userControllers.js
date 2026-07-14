@@ -1,4 +1,4 @@
-const {registeruser,loginuser,getusers,blockuser,unblockuser}=require("../models/userModel");
+const {registeruser,loginuser,getusers,blockuser,unblockuser,removeuser}=require("../models/userModel");
 const {createcart,getcartbyuserid}=require("../models/cartModel");
 
 const jwt=require("jsonwebtoken");
@@ -71,6 +71,16 @@ const unBlockUser=async(req,res)=>{
 		res.json(error.message);
 	}
 };
+const removeUser=async(req,res)=>{
+	try{
+		const userID=req.params.id;
+		const user=await removeuser(userID);
+		res.json(user);
+
+	}catch(error){
+		res.json(error.message);
+	}
+};
 
 	
-module.exports={registerUser,loginUser,getUsers,blockUser,unBlockUser};
+module.exports={registerUser,loginUser,getUsers,blockUser,unBlockUser,removeUser};
